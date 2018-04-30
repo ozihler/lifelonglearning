@@ -6,7 +6,6 @@ import java.util.List;
 public class Courses {
     private List<Course> courses;
 
-
     public static Courses create(List<Course> courses) {
         return new Courses(courses);
     }
