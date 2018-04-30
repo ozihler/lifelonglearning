@@ -15,7 +15,7 @@ public class CoursesController {
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     public String course() {
         course.setName("new course");
-
+        System.out.printf("hello");
         return course.toString();
     }
 }
