@@ -1,9 +1,8 @@
 package com.zuehlke.app.lifelonglearning.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class Course {
@@ -11,6 +10,7 @@ public class Course {
     @GeneratedValue
     private Long id;
     private String name;
+    @JsonIgnore
     @ManyToOne
     private Module module;
 
@@ -35,4 +35,6 @@ public class Course {
     public Module getModule() {
         return module;
     }
+
+
 }

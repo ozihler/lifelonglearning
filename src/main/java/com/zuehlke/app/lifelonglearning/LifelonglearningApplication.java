@@ -29,12 +29,18 @@ public class LifelonglearningApplication {
         return (evt) -> {
 
             Account account = accountRepository.save(new Account("ozihler", "password"));
-            HashSet<Account> accounts = new HashSet<>(Arrays.asList(account));
 
-            Module module = moduleRepository.save(new Module("Clean Code", accounts));
+            Module module = moduleRepository.save(new Module("Clean Code", new HashSet<>(Arrays.asList(account))));
             courseRepository.save(new Course(module, "Code Smells"));
             courseRepository.save(new Course(module, "Target Designs"));
             courseRepository.save(new Course(module, "Refactorings"));
+
+            Account account2 = accountRepository.save(new Account("hanspeter", "password"));
+
+            Module module2 = moduleRepository.save(new Module("Legacy Code meistern", new HashSet<>(Arrays.asList(account2))));
+            courseRepository.save(new Course(module2, "Code Smells"));
+            courseRepository.save(new Course(module2, "Target Designs"));
+            courseRepository.save(new Course(module2, "Refactorings"));
 
         };
     }

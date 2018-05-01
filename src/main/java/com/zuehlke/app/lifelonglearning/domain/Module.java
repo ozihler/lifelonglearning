@@ -1,5 +1,7 @@
 package com.zuehlke.app.lifelonglearning.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +16,9 @@ public class Module {
     @OneToMany(mappedBy = "module")
     private Set<Course> courses = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable
+    @JsonIgnore
     private Set<Account> accounts = new HashSet<>();
 
     private Module() {
@@ -42,4 +45,5 @@ public class Module {
     public Set<Account> getAccounts() {
         return accounts;
     }
+
 }
